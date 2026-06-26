@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Amivra Ark">
+  <circle cx="32" cy="32" r="32" fill="#0a0b0d"/>
+  <path d="M32 18c-7.5 0-13 6-13 14s4.8 13 13 13 13-5.9 13-13-5.5-14-13-14Z" fill="#f1efe9"/>
+  <ellipse cx="32" cy="29" rx="5.5" ry="6.5" fill="#0a0b0d"/>
+  <circle cx="32" cy="29" r="2.6" fill="#cba36e"/>
+</svg>
