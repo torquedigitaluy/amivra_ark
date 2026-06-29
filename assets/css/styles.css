@@ -213,40 +213,24 @@ button:focus-visible,
 /* --------------------------------------------------------------------------
    5. BACKDROP — one panoramic master background, cropped per page
    Tonal flow: Music (darkest/coolest) -> Home -> MariAma -> Practice -> Books (warmest)
-   NOTE: this gradient is a placeholder standing in for the exported master
-   panoramic image (navy -> charcoal -> steel blue -> mauve -> taupe -> champagne).
-   Swap by replacing the final layer below with: url("../img/background-master.jpg")
+   Single master photo (assets/img/background-master.jpg), one continuous
+   ribbon — each page shows a different horizontal slice via background-position.
    -------------------------------------------------------------------------- */
 body {
   background-color: var(--bg-base);
   background-image:
-    linear-gradient(180deg, var(--scrim-top) 0%, rgba(9, 10, 12, 0.55) 55%, var(--scrim-bottom) 100%),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.022) 0px, rgba(255, 255, 255, 0.022) 1px, transparent 2px, transparent 15px),
-    radial-gradient(34% 28% at 14% 18%, rgba(180, 199, 219, 0.12), transparent 62%),
-    radial-gradient(30% 24% at 52% 70%, rgba(210, 182, 168, 0.1), transparent 62%),
-    radial-gradient(28% 22% at 86% 26%, rgba(255, 236, 205, 0.16), transparent 62%),
-    linear-gradient(90deg,
-      #0a0c10 0%,
-      #12151b 12%,
-      #1d222b 22%,
-      #2d3a4a 34%,
-      #3c4658 44%,
-      #564b56 56%,
-      #6e5b62 66%,
-      #8a7768 78%,
-      #c2ad8c 90%,
-      #ecdfc8 100%
-    );
-  background-size: 100% 100%, 220px 100%, 100% 100%, 100% 100%, 100% 100%, 460% 100%;
-  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, var(--bg-pos) center;
-  background-repeat: no-repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    linear-gradient(180deg, var(--scrim-top) 0%, rgba(9, 10, 12, 0.5) 55%, var(--scrim-bottom) 100%),
+    url("../img/background-master.jpg");
+  background-size: 100% 100%, 240% auto;
+  background-position: 0 0, var(--bg-pos) center;
+  background-repeat: no-repeat, no-repeat;
   background-attachment: fixed;
 }
 
 body.zone-music    { --bg-pos: 0%; }
-body.zone-home      { --bg-pos: 25%; }
-body.zone-mariama   { --bg-pos: 50%; }
-body.zone-practice  { --bg-pos: 75%; }
+body.zone-home      { --bg-pos: 22%; }
+body.zone-mariama   { --bg-pos: 45%; }
+body.zone-practice  { --bg-pos: 68%; }
 body.zone-books     { --bg-pos: 100%; }
 
 @media (max-width: 767px) {
