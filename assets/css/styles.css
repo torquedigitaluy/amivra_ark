@@ -34,10 +34,10 @@
   --space-4: 1rem;
   --space-5: 1.4rem;
   --space-6: 1.9rem;
-  --space-7: 2.6rem;
-  --space-8: 3.4rem;
+  --space-7: 2.2rem;
+  --space-8: 2.8rem;
 
-  --section-pad-y: clamp(2.4rem, 4vw + 1rem, 4.2rem);
+  --section-pad-y: clamp(1.9rem, 3.2vw + 0.9rem, 3.4rem);
   --container-max: 1180px;
   --container-pad: clamp(1.25rem, 4vw, 2.75rem);
 
@@ -57,9 +57,9 @@
   --bg-base: #14161a;
   --text: #f3f1ea;
   --text-muted: rgba(243, 241, 234, 0.72);
-  --surface: rgba(255, 255, 255, 0.05);
-  --surface-strong: rgba(255, 255, 255, 0.095);
-  --surface-border: rgba(255, 255, 255, 0.12);
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.13);
+  --surface-border: rgba(255, 255, 255, 0.15);
   --accent: #cdb78f;
   --scrim-top: rgba(10, 11, 13, 0.2);
   --scrim-bottom: rgba(8, 9, 10, 0.82);
@@ -242,6 +242,15 @@ body.zone-mariama   { --bg-pos: 45%; }
 body.zone-practice  { --bg-pos: 68%; }
 body.zone-books     { --bg-pos: 100%; }
 
+/* Home hero runs brighter on its right edge than the rest of the ribbon;
+   trim it slightly so the first screen reads as balanced. */
+body.zone-home .backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(6, 7, 8, 0) 45%, rgba(6, 7, 8, 0.4) 100%);
+}
+
 /* --------------------------------------------------------------------------
    6. COMPONENTS — Header / Nav
    -------------------------------------------------------------------------- */
@@ -275,15 +284,20 @@ body.zone-books     { --bg-pos: 100%; }
 }
 
 .brand { display: inline-flex; align-items: center; gap: var(--space-3); }
-.brand__mark { width: 28px; height: 28px; object-fit: contain; }
+.brand__mark {
+  width: 33px;
+  height: 33px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.55));
+}
 .brand__name { font-size: var(--fs-base); font-weight: 600; letter-spacing: 0.01em; }
 
 .brand__sub {
   display: block;
   font-size: var(--fs-xs);
-  font-weight: 400;
-  letter-spacing: var(--tracking-wide);
-  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(243, 241, 234, 0.85);
   text-transform: uppercase;
   margin-top: 2px;
 }
@@ -378,6 +392,11 @@ body.zone-books     { --bg-pos: 100%; }
 }
 
 .hero__title { font-size: var(--fs-3xl); margin-bottom: var(--space-4); max-width: 19ch; }
+
+/* Internal pages (Music, MariAma, Practice, Books & Tools) carry a shorter
+   hero than Home — a slightly smaller heading keeps them from competing
+   with Home's full-size headline. */
+body:not(.zone-home) .hero__title { font-size: clamp(1.9rem, 1.55rem + 2.6vw, 2.9rem); }
 
 .hero__lead {
   font-size: var(--fs-md);
@@ -509,7 +528,7 @@ a.card:hover, .card.is-interactive:hover {
 
 @media (min-width: 768px) { .site-footer__top { grid-template-columns: 1.2fr 2fr; } }
 
-.site-footer__brand p { margin-top: var(--space-3); max-width: 28ch; font-size: var(--fs-sm); }
+.site-footer__brand p { margin-top: var(--space-3); max-width: 28ch; font-size: var(--fs-sm); color: rgba(243, 241, 234, 0.82); }
 
 .footer-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
 
@@ -527,7 +546,7 @@ a.card:hover, .card.is-interactive:hover {
 .footer-col a, .footer-col span {
   display: block;
   font-size: var(--fs-sm);
-  color: var(--text-muted);
+  color: rgba(243, 241, 234, 0.82);
   padding-block: var(--space-1);
   transition: color var(--dur) var(--ease);
 }
@@ -544,7 +563,7 @@ a.card:hover, .card.is-interactive:hover {
   border-top: 1px solid var(--surface-border);
 }
 
-.footer-meta { display: flex; align-items: center; gap: var(--space-3); font-size: var(--fs-xs); color: var(--text-muted); }
+.footer-meta { display: flex; align-items: center; gap: var(--space-3); font-size: var(--fs-sm); color: rgba(243, 241, 234, 0.78); }
 
 .footer-social { display: flex; gap: var(--space-4); }
 .footer-social a { color: var(--text-muted); }
@@ -559,6 +578,14 @@ a.card:hover, .card.is-interactive:hover {
 @media (min-width: 1024px) {
   .split--2 { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* About MariAma (Home): give the heading column more visual weight than
+   the surrounding prose so it reads as the section's anchor, not a peer. */
+#about .split--2 > div:first-child {
+  border-left: 2px solid var(--accent);
+  padding-left: var(--space-5);
+}
+#about .section__title { font-size: var(--fs-2xl); font-weight: 600; }
 
 .icon { flex-shrink: 0; display: inline-block; }
 
