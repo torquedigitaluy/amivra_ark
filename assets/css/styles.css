@@ -37,7 +37,7 @@
   --space-7: 2.2rem;
   --space-8: 2.8rem;
 
-  --section-pad-y: clamp(1.9rem, 3.2vw + 0.9rem, 3.4rem);
+  --section-pad-y: clamp(1.6rem, 2.8vw + 0.8rem, 2.9rem);
   --container-max: 1180px;
   --container-pad: clamp(1.25rem, 4vw, 2.75rem);
 
@@ -57,9 +57,9 @@
   --bg-base: #14161a;
   --text: #f3f1ea;
   --text-muted: rgba(243, 241, 234, 0.72);
-  --surface: rgba(255, 255, 255, 0.08);
-  --surface-strong: rgba(255, 255, 255, 0.13);
-  --surface-border: rgba(255, 255, 255, 0.15);
+  --surface: rgba(255, 255, 255, 0.11);
+  --surface-strong: rgba(255, 255, 255, 0.17);
+  --surface-border: rgba(255, 255, 255, 0.17);
   --accent: #cdb78f;
   --scrim-top: rgba(10, 11, 13, 0.2);
   --scrim-bottom: rgba(8, 9, 10, 0.82);
@@ -248,7 +248,7 @@ body.zone-home .backdrop::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(6, 7, 8, 0) 45%, rgba(6, 7, 8, 0.4) 100%);
+  background: linear-gradient(100deg, rgba(6, 7, 8, 0) 38%, rgba(6, 7, 8, 0.56) 100%);
 }
 
 /* --------------------------------------------------------------------------
@@ -283,23 +283,31 @@ body.zone-home .backdrop::after {
   padding-block: var(--space-3);
 }
 
-.brand { display: inline-flex; align-items: center; gap: var(--space-3); }
+.brand { display: inline-flex; align-items: center; gap: var(--space-2); }
 .brand__mark {
   width: 33px;
   height: 33px;
   object-fit: contain;
   filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.55));
 }
-.brand__name { font-size: var(--fs-base); font-weight: 600; letter-spacing: 0.01em; }
+.brand__name {
+  display: inline-flex;
+  flex-direction: column;
+  font-size: var(--fs-base);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
 
 .brand__sub {
   display: block;
-  font-size: var(--fs-xs);
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
   color: rgba(243, 241, 234, 0.85);
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .nav-toggle {
@@ -393,10 +401,15 @@ body.zone-home .backdrop::after {
 
 .hero__title { font-size: var(--fs-3xl); margin-bottom: var(--space-4); max-width: 19ch; }
 
-/* Internal pages (Music, MariAma, Practice, Books & Tools) carry a shorter
-   hero than Home — a slightly smaller heading keeps them from competing
-   with Home's full-size headline. */
-body:not(.zone-home) .hero__title { font-size: clamp(1.9rem, 1.55rem + 2.6vw, 2.9rem); }
+/* Internal pages (Music, MariAma, Practice, Books & Tools) carry a shorter,
+   lighter first screen than Home: a smaller, tighter heading and reduced
+   top padding keep them from feeling top-heavy. */
+body:not(.zone-home) .hero { padding-block: var(--space-6) var(--space-5); }
+
+body:not(.zone-home) .hero__title {
+  font-size: clamp(1.6rem, 1.35rem + 2vw, 2.3rem);
+  letter-spacing: -0.015em;
+}
 
 .hero__lead {
   font-size: var(--fs-md);
@@ -528,7 +541,7 @@ a.card:hover, .card.is-interactive:hover {
 
 @media (min-width: 768px) { .site-footer__top { grid-template-columns: 1.2fr 2fr; } }
 
-.site-footer__brand p { margin-top: var(--space-3); max-width: 28ch; font-size: var(--fs-sm); color: rgba(243, 241, 234, 0.82); }
+.site-footer__brand p { margin-top: var(--space-3); max-width: 28ch; font-size: var(--fs-sm); line-height: 1.5; color: rgba(243, 241, 234, 0.86); }
 
 .footer-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
 
@@ -546,7 +559,8 @@ a.card:hover, .card.is-interactive:hover {
 .footer-col a, .footer-col span {
   display: block;
   font-size: var(--fs-sm);
-  color: rgba(243, 241, 234, 0.82);
+  line-height: 1.5;
+  color: rgba(243, 241, 234, 0.88);
   padding-block: var(--space-1);
   transition: color var(--dur) var(--ease);
 }
@@ -563,7 +577,7 @@ a.card:hover, .card.is-interactive:hover {
   border-top: 1px solid var(--surface-border);
 }
 
-.footer-meta { display: flex; align-items: center; gap: var(--space-3); font-size: var(--fs-sm); color: rgba(243, 241, 234, 0.78); }
+.footer-meta { display: flex; align-items: center; gap: var(--space-3); font-size: var(--fs-sm); color: rgba(243, 241, 234, 0.85); }
 
 .footer-social { display: flex; gap: var(--space-4); }
 .footer-social a { color: var(--text-muted); }
